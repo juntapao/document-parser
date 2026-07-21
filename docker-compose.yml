@@ -13,4 +13,3 @@ services:
       APP_DEBUG: "1"
       XDEBUG_MODE: debug,develop
       XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
-    command: sh -lc "composer install --no-interaction --prefer-dist && php -S 0.0.0.0:8000 -t public"

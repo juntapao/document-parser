@@ -30,9 +30,12 @@ RUN printf "%s\n" \
     "zend_extension=xdebug.so" \
     "xdebug.mode=debug,develop" \
     "xdebug.start_with_request=yes" \
-    "xdebug.discover_client_host=1" \
+    "xdebug.discover_client_host=0" \
     "xdebug.client_host=host.docker.internal" \
     "xdebug.client_port=9003" \
+    "xdebug.idekey=VSCODE" \
+    "xdebug.log=/tmp/xdebug.log" \
+    "xdebug.log_level=10" \
     > /etc/php83/conf.d/99-xdebug.ini
 
 RUN ln -sf /usr/bin/php83 /usr/local/bin/php
@@ -40,7 +43,7 @@ RUN ln -sf /usr/bin/php83 /usr/local/bin/php
 WORKDIR /app
 
 COPY composer.json composer.lock* ./
-RUN composer install --no-interaction --prefer-dist
+RUN composer install --no-interaction --prefer-dist --no-scripts
 
 COPY . .
 
