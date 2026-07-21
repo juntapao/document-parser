@@ -1,0 +1,3 @@
+upload_image:
+  path: /api/upload-image
+  controller: App\Controller\ImageUploadController::upload
